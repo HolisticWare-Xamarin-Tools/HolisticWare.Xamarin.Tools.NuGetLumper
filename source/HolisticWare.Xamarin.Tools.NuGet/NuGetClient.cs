@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
 using NuGet.Common;
 using NuGet.Protocol;
 using NuGet.Protocol.Core.Types;
@@ -14,21 +15,21 @@ namespace HolisticWare.Xamarin.Tools.NuGet
     /// 
     /// </summary>
     /// <see cref="https://docs.microsoft.com/en-us/nuget/reference/nuget-client-sdk"/>
-    public partial class Client
+    public partial class NuGetClient
     {
-        ILogger logger = null;
         CancellationToken cancellationToken;
+        ILogger logger = null;
 
         SourceCacheContext cache = null;
         SourceRepository repository = null;
 
-        public Client()
+        public NuGetClient()
         {
-            ILogger logger = NullLogger.Instance;
-            CancellationToken cancellationToken = CancellationToken.None;
+            cancellationToken = CancellationToken.None;
+            logger = NullLogger.Instance;
 
-            SourceCacheContext cache = new SourceCacheContext();
-            SourceRepository repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
+            cache = new SourceCacheContext();
+            repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
 
             return;
         }
@@ -42,33 +43,28 @@ namespace HolisticWare.Xamarin.Tools.NuGet
             Task<IEnumerable<IPackageSearchMetadata>>
                                         SearchPackagesByKeywordAsync
                                                 (
-                                                    string keyword
+                                                    string keyword,
+                                                    int number_of_results = 100
                                                 )
         {
-            SourceRepository repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
             PackageSearchResource resource = await repository.GetResourceAsync<PackageSearchResource>();
-            SearchFilter searchFilter = new SearchFilter
-                                                (
-                                                    includePrerelease: true,
-                                                    new SearchFilterType
-                                                    {                                                       
-                                                    }
-                                                );
+            SearchFilter filter = new SearchFilter
+                                        (
+                                            includePrerelease: true,
+                                            new SearchFilterType
+                                            {                                                       
+                                            }
+                                        );
 
             IEnumerable<IPackageSearchMetadata> results = await resource.SearchAsync
                                                                                 (
                                                                                     keyword,
-                                                                                    searchFilter,
+                                                                                    filter,
                                                                                     skip: 0,
-                                                                                    take: 100,
+                                                                                    take: number_of_results,
                                                                                     logger,
                                                                                     cancellationToken
                                                                                 );
-
-            foreach (IPackageSearchMetadata result in results)
-            {
-                Console.WriteLine($"Found package {result.Identity.Id} {result.Identity.Version}");
-            }
 
             return results;
         }
@@ -95,11 +91,6 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                                                 logger,
                                                                                 cancellationToken
                                                                             );
-
-            foreach (NuGetVersion version in versions)
-            {
-                Console.WriteLine($"Found version {version}");
-            }
 
             return versions;
         }

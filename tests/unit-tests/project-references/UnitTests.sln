@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source-library", "source-library", "{C56C7067-58D0-4685-BF27-37C1E9196A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet", "..\..\..\source\HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj", "{21B0E896-7EF6-4EC8-B867-36C2947A1882}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.XUnit", "UnitTests.XUnit\UnitTests.XUnit.csproj", "{2093BBFD-801E-4E91-9901-8EF866B968A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21B0E896-7EF6-4EC8-B867-36C2947A1882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B0E896-7EF6-4EC8-B867-36C2947A1882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B0E896-7EF6-4EC8-B867-36C2947A1882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B0E896-7EF6-4EC8-B867-36C2947A1882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2093BBFD-801E-4E91-9901-8EF866B968A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2093BBFD-801E-4E91-9901-8EF866B968A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2093BBFD-801E-4E91-9901-8EF866B968A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2093BBFD-801E-4E91-9901-8EF866B968A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21B0E896-7EF6-4EC8-B867-36C2947A1882} = {C56C7067-58D0-4685-BF27-37C1E9196A3C}
+	EndGlobalSection
+EndGlobal

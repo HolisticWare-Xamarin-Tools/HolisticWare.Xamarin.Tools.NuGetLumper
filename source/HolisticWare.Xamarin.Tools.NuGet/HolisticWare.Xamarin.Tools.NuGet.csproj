@@ -14,4 +14,7 @@
   <ItemGroup>
     <PackageReference Include="NuGet.Protocol" Version="5.6.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\externals\submodules\GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10.csproj" />
+  </ItemGroup>
 </Project>

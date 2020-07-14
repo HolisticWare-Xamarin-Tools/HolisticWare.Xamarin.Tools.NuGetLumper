@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.csproj", "{541CA104-B14D-45DA-A5AC-CE9D852D3F3E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data", "HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.FassBinderMeister.Data.csproj", "{B7A2EA9F-9D42-440A-9A12-F3A64B179E01}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.NuGet", "HolisticWare.Xamarin.Tools.NuGet\HolisticWare.Xamarin.Tools.NuGet.csproj", "{4036F62E-0833-42F1-8976-BC1CB3DD37A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "externals", "externals", "{EDADCC02-8AF2-452B-B856-9F0442159A7E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10-shared", "..\externals\submodules\GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10-shared\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10-shared.shproj", "{C0839C83-7725-420D-B39A-6B5E5FBF7162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10", "..\externals\submodules\GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10.csproj", "{8C481749-143F-4DAA-B601-2517A859D5BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,17 +17,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{541CA104-B14D-45DA-A5AC-CE9D852D3F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{541CA104-B14D-45DA-A5AC-CE9D852D3F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{541CA104-B14D-45DA-A5AC-CE9D852D3F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{541CA104-B14D-45DA-A5AC-CE9D852D3F3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B7A2EA9F-9D42-440A-9A12-F3A64B179E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B7A2EA9F-9D42-440A-9A12-F3A64B179E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B7A2EA9F-9D42-440A-9A12-F3A64B179E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B7A2EA9F-9D42-440A-9A12-F3A64B179E01}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4036F62E-0833-42F1-8976-BC1CB3DD37A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C481749-143F-4DAA-B601-2517A859D5BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C481749-143F-4DAA-B601-2517A859D5BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C481749-143F-4DAA-B601-2517A859D5BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C481749-143F-4DAA-B601-2517A859D5BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C0839C83-7725-420D-B39A-6B5E5FBF7162} = {EDADCC02-8AF2-452B-B856-9F0442159A7E}
+		{8C481749-143F-4DAA-B601-2517A859D5BC} = {EDADCC02-8AF2-452B-B856-9F0442159A7E}
 	EndGlobalSection
 EndGlobal
