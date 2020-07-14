@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageVersion>0.0.1</PackageVersion>
+    <Authors>moljac / HolisticWare / Xamarin / Microsoft</Authors>
+    <Owners>moljac / HolisticWare / Xamarin / Microsoft</Owners>
+    <Summary>nuget client API tools</Summary>
+    <Title>HolisticWare.Xamarin.Tools.NuGet</Title>
+    <Description>Tools for nuget client API for bindings productivity</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NuGet.Protocol" Version="5.6.0" />
+  </ItemGroup>
+</Project>
