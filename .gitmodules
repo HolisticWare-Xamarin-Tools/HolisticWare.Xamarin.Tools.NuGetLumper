@@ -1,0 +1,6 @@
+[submodule "externals/submodules/Matrix"]
+	path = externals/submodules/Matrix
+	url = https://github.com/HolisticWare/HolisticWare.Core.Math.Matrix.git
+[submodule "externals/submodules/GraphTheory"]
+	path = externals/submodules/GraphTheory
+	url = https://github.com/HolisticWare/HolisticWare.Core.Math.Discrete.GraphTheory.git
