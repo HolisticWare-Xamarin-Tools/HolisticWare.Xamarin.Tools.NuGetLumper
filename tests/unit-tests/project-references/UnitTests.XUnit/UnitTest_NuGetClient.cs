@@ -69,5 +69,29 @@ namespace UnitTests.XUnit
 
             return;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <see cref="https://github.com/NuGet/Home/issues/6188"/>
+        [Fact]
+        public void Test_Dependencies()
+        {
+            NuGetClient nc = new NuGetClient();
+
+            var dependencies = nc.GetDependencies
+                                        (
+                                            "Xamarin.AndroidX.Activity",
+                                            "1.1.0.1"
+                                        )
+                                        .Result;
+
+            foreach (string d in dependencies)
+            {
+                Console.WriteLine($"Found version {d}");
+            }
+
+            return;
+        }
     }
 }

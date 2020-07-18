@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Xamarin.Tools.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.XUnit", "UnitTests.XUnit\UnitTests.XUnit.csproj", "{2093BBFD-801E-4E91-9901-8EF866B968A2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{17DEEB59-63F6-4897-90F1-578ED8EEB5C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.NuGetClientAPI", "..\..\..\samples\Sample.NuGetClientAPI\Sample.NuGetClientAPI.csproj", "{45F62B53-32CE-45C5-B2D7-1FCAECD43BD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "externals", "externals", "{5AF0146C-B5A9-47E1-9334-0BEFF427F353}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10", "..\..\..\externals\submodules\GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10.csproj", "{103B517D-925A-4D93-8B02-08D7FE725661}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,8 +31,18 @@ Global
 		{2093BBFD-801E-4E91-9901-8EF866B968A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2093BBFD-801E-4E91-9901-8EF866B968A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2093BBFD-801E-4E91-9901-8EF866B968A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F62B53-32CE-45C5-B2D7-1FCAECD43BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F62B53-32CE-45C5-B2D7-1FCAECD43BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F62B53-32CE-45C5-B2D7-1FCAECD43BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F62B53-32CE-45C5-B2D7-1FCAECD43BD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{103B517D-925A-4D93-8B02-08D7FE725661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{103B517D-925A-4D93-8B02-08D7FE725661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{103B517D-925A-4D93-8B02-08D7FE725661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{103B517D-925A-4D93-8B02-08D7FE725661}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{21B0E896-7EF6-4EC8-B867-36C2947A1882} = {C56C7067-58D0-4685-BF27-37C1E9196A3C}
+		{45F62B53-32CE-45C5-B2D7-1FCAECD43BD0} = {17DEEB59-63F6-4897-90F1-578ED8EEB5C7}
+		{103B517D-925A-4D93-8B02-08D7FE725661} = {5AF0146C-B5A9-47E1-9334-0BEFF427F353}
 	EndGlobalSection
 EndGlobal
