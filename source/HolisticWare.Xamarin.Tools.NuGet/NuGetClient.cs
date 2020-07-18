@@ -4,10 +4,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-using NuGet.Common;
 using NuGet.Protocol;
+using NuGet.Common;
+using NuGet.Configuration;
+using NuGet.Packaging.Core;
 using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
+using NuGet.Frameworks;
+using System.Linq;
 
 namespace HolisticWare.Xamarin.Tools.NuGet
 {
@@ -20,7 +24,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet
         CancellationToken cancellationToken;
         ILogger logger = null;
 
-        SourceCacheContext cache = null;
+        SourceCacheContext source_cache = null;
         SourceRepository repository = null;
 
         public NuGetClient()
@@ -28,7 +32,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet
             cancellationToken = CancellationToken.None;
             logger = NullLogger.Instance;
 
-            cache = new SourceCacheContext();
+            source_cache = new SourceCacheContext();
             repository = Repository.Factory.GetCoreV3("https://api.nuget.org/v3/index.json");
 
             return;
@@ -87,7 +91,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet
             IEnumerable<NuGetVersion> versions = await resource.GetAllVersionsAsync
                                                                             (
                                                                                 nuget_id,
-                                                                                cache,
+                                                                                source_cache,
                                                                                 logger,
                                                                                 cancellationToken
                                                                             );
@@ -116,7 +120,7 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                                                     nuget_id,
                                                                                     includePrerelease: true,
                                                                                     includeUnlisted: false,
-                                                                                    cache,
+                                                                                    source_cache,
                                                                                     logger,
                                                                                     cancellationToken
                                                                                 );
@@ -129,6 +133,60 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                 Console.WriteLine($"Description: {package.Description}");
             }
             return packages;
+        }
+
+        public async
+            Task<System.Collections.Concurrent.ConcurrentBag<string>>
+                                        GetDependencies
+                                                (
+                                                    string id,
+                                                    string version
+                                                )
+        {
+            System.Collections.Concurrent.ConcurrentBag<string> dependency_collection;
+
+            DependencyInfoResource resource = await repository.GetResourceAsync<DependencyInfoResource>(CancellationToken.None);
+            SourcePackageDependencyInfo package = await resource.ResolvePackage
+                                                                        (
+                                                                            new PackageIdentity(id, new NuGetVersion(version)),
+                                                                            NuGetFramework.AnyFramework,
+                                                                            source_cache,
+                                                                            logger,
+                                                                            cancellationToken
+                                                                        );
+            if (package == null)
+            {
+                throw new InvalidOperationException("Could not locate dependency!");
+            }
+
+            dependency_collection = new System.Collections.Concurrent.ConcurrentBag<string>();
+
+            foreach (var dependency in package.Dependencies)
+            {
+                dependency_collection.Add(dependency.Id + " " + dependency.VersionRange.MinVersion);
+            }
+
+            await Task.WhenAll
+                        (
+                            package.Dependencies.Select
+                                                    (
+                                                        async (d) =>
+                                                        {
+                                                            var rec = await GetDependencies
+                                                                (
+                                                                        d.Id,
+                                                                        d.VersionRange.MinVersion.ToNormalizedString()
+                                                                    );
+
+                                                            foreach (string s in rec)
+                                                            {
+                                                                dependency_collection.Add(s);
+                                                            }
+                                                        }
+                                                    )
+                        );
+
+            return dependency_collection;
         }
 
     }
