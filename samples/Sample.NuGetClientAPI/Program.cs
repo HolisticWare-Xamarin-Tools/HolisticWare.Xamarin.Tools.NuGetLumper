@@ -9,6 +9,7 @@ using NuGet.Common;
 using NuGet.Configuration;
 using NuGet.Frameworks;
 using NuGet.Packaging;
+using NuGet.Packaging.Signing;
 using NuGet.Packaging.Core;
 using NuGet.Packaging.Signing;
 using NuGet.Protocol;
@@ -52,11 +53,12 @@ namespace Sample.NuGetClientAPI
                 var packagePathResolver = new PackagePathResolver(Path.GetFullPath("packages"));
                 var packageExtractionContext = new PackageExtractionContext(
                     PackageSaveMode.Defaultv3,
-                    XmlDocFileSaveMode.None,
-                    NullLogger.Instance,
-                    new PackageSignatureVerifier(
-                        SignatureVerificationProviderFactory.GetSignatureVerificationProviders()),
-                    SignedPackageVerifierSettings.GetDefault());
+                    XmlDocFileSaveMode.None, 
+                    ClientPolicyContext.GetClientPolicy(NullSettings.Instance, NullLogger.Instance),
+                    NullLogger.Instance
+                    //new PackageSignatureVerifier(SignatureVerificationProviderFactory.GetSignatureVerificationProviders()),
+                    //SignedPackageVerifierSettings.GetDefault()
+                    );
                 var frameworkReducer = new FrameworkReducer();
 
                 foreach (var packageToInstall in packagesToInstall)
@@ -98,6 +100,8 @@ namespace Sample.NuGetClientAPI
                         .Where(x => x.TargetFramework.Equals(nearest))
                         .SelectMany(x => x.Items)));
                 }
+
+                return;
             }
 
             async Task GetPackageDependencies(PackageIdentity package,
@@ -128,5 +132,4 @@ namespace Sample.NuGetClientAPI
             }
         }
     }
-}
 }
