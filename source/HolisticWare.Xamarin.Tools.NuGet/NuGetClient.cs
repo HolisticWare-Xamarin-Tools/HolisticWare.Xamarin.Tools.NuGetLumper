@@ -12,6 +12,7 @@ using NuGet.Protocol.Core.Types;
 using NuGet.Versioning;
 using NuGet.Frameworks;
 using System.Linq;
+using Core.Math.Discrete.GraphTheory;
 
 namespace HolisticWare.Xamarin.Tools.NuGet
 {
@@ -143,8 +144,6 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                     string version
                                                 )
         {
-            System.Collections.Concurrent.ConcurrentBag<string> dependency_collection;
-
             DependencyInfoResource resource = await repository.GetResourceAsync<DependencyInfoResource>(CancellationToken.None);
             SourcePackageDependencyInfo package = await resource.ResolvePackage
                                                                         (
@@ -159,11 +158,18 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                 throw new InvalidOperationException("Could not locate dependency!");
             }
 
-            dependency_collection = new System.Collections.Concurrent.ConcurrentBag<string>();
+            //System.Collections.Concurrent.ConcurrentBag<string> dependency_collection;
+            //dependency_collection = new System.Collections.Concurrent.ConcurrentBag<string>();
+
+            Graph<string, string> dependency_graph = new Graph<string, string>();
 
             foreach (var dependency in package.Dependencies)
             {
-                dependency_collection.Add(dependency.Id + " " + dependency.VersionRange.MinVersion);
+                Node<string> dependency_node = new Node<string>()
+                {
+                    
+                };
+                //dependency_collection.Add(dependency.Id + " " + dependency.VersionRange.MinVersion);
             }
 
             await Task.WhenAll
@@ -173,10 +179,10 @@ namespace HolisticWare.Xamarin.Tools.NuGet
                                                         async (d) =>
                                                         {
                                                             var rec = await GetDependencies
-                                                                (
-                                                                        d.Id,
-                                                                        d.VersionRange.MinVersion.ToNormalizedString()
-                                                                    );
+                                                                                (
+                                                                                    d.Id,
+                                                                                    d.VersionRange.MinVersion.ToNormalizedString()
+                                                                                );
 
                                                             foreach (string s in rec)
                                                             {
