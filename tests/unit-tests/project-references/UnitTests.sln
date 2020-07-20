@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "externals", "externals", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10", "..\..\..\externals\submodules\GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10.csproj", "{103B517D-925A-4D93-8B02-08D7FE725661}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10-shared", "..\..\..\externals\submodules\GraphTheory\source\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10-shared\HolisticWare.Core.Math.Discrete.GraphTheory.netstandard10-shared.shproj", "{C0839C83-7725-420D-B39A-6B5E5FBF7162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Core.Math.Matrix.netstandard10", "..\..\..\externals\submodules\Matrix\source\HolisticWare.Core.Math.Matrix.netstandard10\HolisticWare.Core.Math.Matrix.netstandard10.csproj", "{C7C8D4A6-631B-4D04-9F83-B3C5167F7DF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +43,16 @@ Global
 		{103B517D-925A-4D93-8B02-08D7FE725661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{103B517D-925A-4D93-8B02-08D7FE725661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{103B517D-925A-4D93-8B02-08D7FE725661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C8D4A6-631B-4D04-9F83-B3C5167F7DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C8D4A6-631B-4D04-9F83-B3C5167F7DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C8D4A6-631B-4D04-9F83-B3C5167F7DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C8D4A6-631B-4D04-9F83-B3C5167F7DF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{21B0E896-7EF6-4EC8-B867-36C2947A1882} = {C56C7067-58D0-4685-BF27-37C1E9196A3C}
 		{45F62B53-32CE-45C5-B2D7-1FCAECD43BD0} = {17DEEB59-63F6-4897-90F1-578ED8EEB5C7}
 		{103B517D-925A-4D93-8B02-08D7FE725661} = {5AF0146C-B5A9-47E1-9334-0BEFF427F353}
+		{C0839C83-7725-420D-B39A-6B5E5FBF7162} = {5AF0146C-B5A9-47E1-9334-0BEFF427F353}
+		{C7C8D4A6-631B-4D04-9F83-B3C5167F7DF0} = {5AF0146C-B5A9-47E1-9334-0BEFF427F353}
 	EndGlobalSection
 EndGlobal
